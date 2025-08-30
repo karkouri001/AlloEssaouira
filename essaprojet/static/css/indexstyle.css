@@ -1,0 +1,39 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background-color: #00aaff;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+        }
+
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }

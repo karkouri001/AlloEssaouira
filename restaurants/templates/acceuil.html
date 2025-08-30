@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container text-center mt-5">
+  <h1 class="display-4 fw-bold text-primary mb-4">
+    Bienvenue à <span class="text-warning">Allo Essaouira</span> 🌊
+  </h1>
+  <p class="lead mb-5">Découvrez les meilleurs restaurants, commandez vos plats favoris et profitez d’un service rapide et local.</p>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-success">🍽️ Restaurants</h5>
+          <p class="card-text">Explorez les restaurants locaux partenaires et découvrez leurs spécialités.</p>
+          <a href="{% url 'liste_restaurants' %}" class="btn btn-outline-success">Voir les restaurants</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-warning">🛵 Livraison</h5>
+          <p class="card-text">Notre service de livraison rapide vous garantit des plats chauds directement à votre porte.</p>
+          <a href="{% url 'mes_commandes' %}" class="btn btn-outline-warning">Suivre ma commande</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-primary">👥 Compte</h5>
+          <p class="card-text">Connectez-vous ou inscrivez-vous en tant que client, restaurant ou livreur.</p>
+          <a href="{% url 'connexion' %}" class="btn btn-outline-primary">Connexion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

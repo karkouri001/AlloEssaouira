@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="text-center mb-4 text-primary">Connexion Livreur</h2>
+  <form method="POST" class="border p-4 rounded bg-light">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label>Nom d'utilisateur</label>
+      {{ form.username }}
+    </div>
+    <div class="mb-3">
+      <label>Mot de passe</label>
+      <br>
+      {{ form.password }}
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+  </form>
+</div>
+{% endblock %}

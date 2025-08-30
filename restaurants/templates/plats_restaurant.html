@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-3">Plats de {{ restaurant.nom }}</h2>
+  <p class="text-muted">{{ restaurant.adresse }} | 📞  {{ restaurant.telephone }}</p>
+
+  {% if success %}
+    <div class="alert alert-success text-center">
+      ✅ Votre commande a été enregistrée avec succès !
+    </div>
+  {% endif %}
+
+  {% if plats %}
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+        {% for plat in plats %}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              {% if plat.photo %}
+                <img src="{{ plat.photo.url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ plat.nom }}">
+              {% else %}
+                <img src="https://via.placeholder.com/300x200?text=Plat" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Plat">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ plat.nom }}</h5>
+                <p class="card-text">{{ plat.description }}</p>
+                <p class="fw-bold text-success">{{ plat.prix }} DH</p>
+                <label for="quantite_{{ plat.id }}">Quantité :</label>
+                <input type="number" name="quantite_{{ plat.id }}" id="quantite_{{ plat.id }}" class="form-control" min="0" value="0">
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="mb-3">
+        <label for="adresse" class="form-label fw-semibold">Adresse de livraison :</label>
+        <input type="text" name="adresse" id="adresse" class="form-control" placeholder="Ex : Rue 123, Essaouira" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Valider la commande</button>
+    </form>
+  {% else %}
+    <p>Aucun plat disponible pour ce restaurant.</p>
+  {% endif %}
+</div>
+{% endblock %}

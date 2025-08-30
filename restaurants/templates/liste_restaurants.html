@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center text-primary">Restaurants disponibles</h2>
+
+  <div class="row g-4">
+    {% for restaurant in restaurants %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          {% if restaurant.photo_restaurant %}
+            <img src="{{ restaurant.photo_restaurant.url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Image du restaurant">
+          {% else %}
+            <img src="{% static 'images/restaurant.jpeg' %}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Image par défaut">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title">{{ restaurant.nom }}</h5>
+            <p class="card-text"><i class="bi bi-geo-alt-fill text-danger"></i> {{ restaurant.adresse }}</p>
+            <p class="card-text"><i class="bi bi-clock-fill text-warning"></i> {{ restaurant.horaires }}</p>
+            <a href="{% url 'plats_restaurant' restaurant.id %}" class="btn btn-outline-primary w-100">Voir les plats</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Aucun restaurant trouvé.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

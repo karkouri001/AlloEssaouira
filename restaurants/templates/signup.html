@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h2 class="mb-4 text-center">Créer un compte Restaurant</h2>
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="id_username" class="form-label">Nom d'utilisateur</label>
+        <input type="text" name="username" class="form-control" id="id_username" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="id_password" class="form-label">Mot de passe</label>
+        <input type="password" name="password" class="form-control" id="id_password" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nom du restaurant</label>
+        {{ form.nom }}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Adresse</label>
+        {{ form.adresse }}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Téléphone</label>
+        {{ form.telephone }}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        {{ form.email }}
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Photo</label>
+        {{ form.photo_restaurant }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Créer le compte</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

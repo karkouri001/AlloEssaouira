@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Commandes disponibles</h2>
+
+<a href="{% url 'after_login_livreur' %}" class="btn btn-primary mb-3">
+  Mes commandes acceptées
+</a>
+
+<ul class="list-group">
+  {% for commande in commandes %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        Commande #{{ commande.id }} - Adresse : {{ commande.adresse_livraison }} - Date : {{ commande.date_commande|date:"d/m/Y H:i" }}
+        - NUM Client : {{ commande.client.telephone }}
+      </div>
+      <div>
+        <form method="POST" action="{% url 'accepter_commande' commande.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success btn-sm">Accepter</button>
+        </form>
+      </div>
+    </li>
+  {% empty %}
+    <li class="list-group-item">Aucune commande disponible.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

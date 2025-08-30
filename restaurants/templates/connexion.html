@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card p-4 shadow" style="max-width: 500px; width: 100%;">
+    <h2 class="text-center mb-4 text-primary">Choisissez votre type de connexion</h2>
+
+    <div class="d-grid gap-3">
+      <a href="{% url 'LoginClient' %}" class="btn btn-outline-success btn-lg">Client</a>
+      <a href="{% url 'login_restaurant' %}" class="btn btn-outline-warning btn-lg">Restaurant</a>
+      <a href="{% url 'login_livreur' %}" class="btn btn-outline-primary btn-lg">Livreur</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

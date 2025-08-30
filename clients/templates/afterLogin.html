@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 text-center">
+  <h2 class="text-primary">Salut, {{ user.username }}!</h2>
+  <p class="lead">Tu veut quoi faire aujourd'hui?</p>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-4">
+      <a href="{% url 'liste_restaurants' %}" class="btn btn-primary btn-lg w-100 mb-3">🛒 Commandez Maintenant</a>
+      <a href="{% url 'mes_commandes' %}" class="btn btn-outline-secondary btn-lg w-100">📃 Mes Commandes</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

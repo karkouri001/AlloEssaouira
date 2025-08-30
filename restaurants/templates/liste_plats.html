@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center text-primary">Mes plats</h2>
+  <a href="{% url 'ajouter_plat' %}" class="btn btn-success mb-3">Ajouter un nouveau plat</a>
+
+  <div class="row g-4">
+    {% for plat in plats %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          {% if plat.photo_plat %}
+            <img src="{{ plat.photo_plat.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ plat.nom }}</h5>
+            <p class="card-text">{{ plat.description }}</p>
+            <p class="card-text fw-bold">{{ plat.prix }} DH</p>
+            <a href="{% url 'modifier_plat' plat.id %}" class="btn btn-warning btn-sm">Modifier</a>
+            <a href="{% url 'supprimer_plat' plat.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Confirmer la suppression ?')">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Aucun plat disponible.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
